@@ -1,6 +1,5 @@
 package com.jevoncode.digester.jakartagem;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -22,11 +21,11 @@ public class MainXMLBased {
 		digester.push(people);
 
 		// Parse the XML document
-//		InputStream input = new FileInputStream("data.xml");
+		// InputStream input = new FileInputStream("data.xml");
 		InputStream input = MainXMLBased.class.getResourceAsStream("/data.xml");
 		digester.parse(input);
-		
-		for(Person p : people)
+
+		for (Person p : people)
 			System.out.println(p);
 	}
 }
