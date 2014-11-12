@@ -1,0 +1,14 @@
+<people>
+	<person id="1" tag="person">
+		<name tag="name">Tom Higgins</name>
+		<age tag="age">25</age>
+	</person>
+	<person id="2" tag="person">
+		<name tag="name">Barney Smith</name>
+		<age tag="age">75</age>
+	</person>
+	<person id="3" tag="person">
+		<name tag="name">Susan Shields</name>
+		<age tag="age">53</age>
+	</person>
+</people>
