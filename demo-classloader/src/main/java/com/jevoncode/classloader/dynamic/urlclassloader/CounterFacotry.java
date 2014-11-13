@@ -1,5 +1,6 @@
 package com.jevoncode.classloader.dynamic.urlclassloader;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Arrays;
@@ -30,7 +31,8 @@ public class CounterFacotry {
 		return CounterFacotry.class.getClassLoader().getResource(".");
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MalformedURLException {
 		System.out.println(getClassPath());
+//		URL url = new URL("D:/git/jc-demos/demo-classloader/target/classes/");//java.net.MalformedURLException: unknown protocol: d
 	}
 }
