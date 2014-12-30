@@ -17,8 +17,8 @@ public class JcServiceImpl implements JcService {
 //		t.start();
 		
 		//线程池线程,在不使用Future的get方法获取返回值时,是不会影响主事务的执行提交
-		ThreadPoolTask task = new ThreadPoolTask();
-		Future  f = ThreadPool.submit(task);
+//		ThreadPoolTask task = new ThreadPoolTask();
+//		Future  f = ThreadPool.submit(task);
 		
 		//线程池线程,使用了Future的get方法获取返回值时,影响了主事务的执行
 		//只有当该线程执行成功,并获取返回值后,主事务才会提交
