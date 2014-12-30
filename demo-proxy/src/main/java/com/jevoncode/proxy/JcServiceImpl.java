@@ -22,7 +22,7 @@ public class JcServiceImpl implements JcService {
 		
 		//线程池线程,使用了Future的get方法获取返回值时,影响了主事务的执行
 		//只有当该线程执行成功,并获取返回值后,主事务才会提交
-		//这样就有一个问题,两个事务是开启
+		//这样就有一个问题,两个事务的嵌套问题
 		ThreadPoolTask task = new ThreadPoolTask();
 		Future  f=  ThreadPool.submit(task);
 		System.out.println("thread pool result="+f.get());
