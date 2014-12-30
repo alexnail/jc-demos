@@ -15,8 +15,8 @@ public class ThreadTask extends Thread{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		ThreadService threadService = (ThreadService) TransactionWrapper.decorate(new ThreadServiceImpl()); // with XA
-		ThreadService threadService = new ThreadServiceImpl(); //no XA
+		ThreadService threadService = (ThreadService) TransactionWrapper.decorate(new ThreadServiceImpl()); // with XA
+//		ThreadService threadService = new ThreadServiceImpl(); //no XA
 		threadService.threadDoSomeThing();
 	}
 
