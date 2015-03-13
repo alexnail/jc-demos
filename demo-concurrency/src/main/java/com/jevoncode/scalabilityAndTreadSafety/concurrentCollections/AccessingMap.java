@@ -1,4 +1,4 @@
-package com.jeovncode.scalabilityAndTreadSafety.concurrentCollections;
+package com.jevoncode.scalabilityAndTreadSafety.concurrentCollections;
 
 import java.util.Collections;
 import java.util.HashMap;

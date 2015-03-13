@@ -1,4 +1,4 @@
-package com.jeovncode.scalabilityAndTreadSafety.coordinating;
+package com.jevoncode.scalabilityAndTreadSafety.coordinating;
 
 import java.io.File;
 

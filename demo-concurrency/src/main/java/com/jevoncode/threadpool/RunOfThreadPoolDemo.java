@@ -1,13 +1,9 @@
 package com.jevoncode.threadpool;
 
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.ThreadPoolExecutor;
 
 import org.apache.log4j.Logger;
-
-import com.jevoncode.tools.JVMTool;
 
 /**
  * 试验下,如果队列的任务远远大于线程池及其处理速度会怎样?
@@ -27,7 +23,6 @@ public class RunOfThreadPoolDemo {
 			Thread.sleep(1000);
 			executorService.submit(new Task(i++));
 			log.debug("线程队列大小 ："+executorService.getQueue().size());
-			log.debug(JVMTool.memoryStatusPlain());
 		}
 	}
 }
