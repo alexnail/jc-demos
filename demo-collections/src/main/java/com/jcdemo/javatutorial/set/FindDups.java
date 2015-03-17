@@ -5,7 +5,6 @@ import java.util.Set;
 
 /**
  * Using the for-each Construct to print out all distinct words in its argument list.
- * @author Jevoncode
  *
  */
 public class FindDups {

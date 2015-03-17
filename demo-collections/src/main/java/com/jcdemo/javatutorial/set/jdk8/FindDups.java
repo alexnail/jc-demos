@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 /**
  * Using JDK 8 Aggregate Operations to print out all distinct words in its argument list.
- * @author Jevoncode
  *
  */
 public class FindDups {
