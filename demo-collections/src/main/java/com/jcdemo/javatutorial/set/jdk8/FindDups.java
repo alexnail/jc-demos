@@ -1,4 +1,4 @@
-package com.jcdemo.javatutorial.jdk8;
+package com.jcdemo.javatutorial.set.jdk8;
 
 import java.util.Arrays;
 import java.util.Set;
