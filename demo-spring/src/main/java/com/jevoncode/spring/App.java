@@ -23,5 +23,6 @@ public class App {
 
 		// use configured instance
 		service.createMovie();
+		
 	}
 }
