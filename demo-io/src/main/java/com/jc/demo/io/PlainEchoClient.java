@@ -16,7 +16,7 @@ public class PlainEchoClient {
 	public PlainEchoClient initPlentyClient() {
 		for (int i = 1; i < 10000000; i++) {
 			users.add(new OneClient().request());
-			System.out.println("初始化第" + i + "用户");
+			System.out.println("初始化第"+i+"用户");
 		}
 		return this;
 	}
@@ -28,7 +28,7 @@ public class PlainEchoClient {
 	}
 
 	public static void main(String args[]) throws IOException, InterruptedException {
-		// Thread.sleep(10000);
+//		Thread.sleep(10000);
 		new PlainEchoClient().initPlentyClient();
 	}
 
@@ -65,15 +65,17 @@ public class PlainEchoClient {
 		public OneClient request() {
 			Random randomMachine = new Random();
 			Long requestInThisTime = (long) (randomMachine.nextInt(10) * 1000);
-			// try {
-			// Thread.sleep(requestInThisTime);
-			// } catch (InterruptedException e) {
-			// // TODO Auto-generated catch block
-			// e.printStackTrace();
-			// }
+//			try {
+//				Thread.sleep(requestInThisTime);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 
 			new Thread(this).start();
 			return this;
 		}
 	}
+
+  
 }
