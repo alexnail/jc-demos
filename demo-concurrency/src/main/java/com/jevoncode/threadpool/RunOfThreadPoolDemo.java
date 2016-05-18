@@ -14,12 +14,12 @@ import org.apache.log4j.Logger;
 public class RunOfThreadPoolDemo {
 	public static Logger log = Logger.getLogger(RunOfThreadPoolDemo.class);
 	public static void main(String[] args) throws InterruptedException {
-		Thread.sleep(10000);
+//		Thread.sleep(10000);
 //		ExecutorService executorService = Executors.newFixedThreadPool(10);
 		ThreadPoolExecutor executorService = (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
 		int i=1;
 		while(true){
-			if(i<10)
+//			if(i<10)
 			Thread.sleep(1000);
 			executorService.submit(new Task(i++));
 			log.debug("线程队列大小 ："+executorService.getQueue().size());
