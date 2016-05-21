@@ -113,6 +113,12 @@ class Producer implements Runnable {
 			OneClient user = new OneClient();
 			message.setContent(user);
 			plainEchoClient.addUser(message);
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }
