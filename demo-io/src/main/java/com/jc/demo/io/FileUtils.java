@@ -2,6 +2,7 @@ package com.jc.demo.io;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -33,7 +34,7 @@ public class FileUtils {
 		StringBuffer content = new StringBuffer();
 		BufferedReader bufferedReader = null;
 		try {
-			bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName),fileCode));
+			bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), fileCode));
 			String l;
 			String delim = "";
 			while ((l = bufferedReader.readLine()) != null) {
@@ -49,13 +50,19 @@ public class FileUtils {
 		return content.toString();
 	}
 
+	/**
+	 * 可优化,有时如果缓存不够多,CharsetDetector可能发现不出是什么格式。需循环递增的校验几次
+	 * @param fileName
+	 * @return
+	 * @throws IOException
+	 */
 	public static String charsetDetector(String fileName) throws IOException {
 		BufferedInputStream in = null;
 		String charset = "UTF-8";
 		try {
 			in = new BufferedInputStream(new FileInputStream(fileName));
 			CharsetDetector d = new CharsetDetector();
-			byte[] b = new byte[1024];
+			byte[] b = new byte[1024*10];
 			if (in.read(b) != -1) {
 				d.setText(b);
 				CharsetMatch match = d.detect();
@@ -64,7 +71,8 @@ public class FileUtils {
 		} catch (IOException e) {
 			throw e;
 		} finally {
-			in.close();
+			if (in != null)
+				in.close();
 		}
 		return charset;
 
@@ -118,7 +126,7 @@ public class FileUtils {
 	public static void write(String content, String fileName, boolean append) throws IOException {
 		FileWriter out = null;
 		try {
-			out = new FileWriter(fileName);
+			out = new FileWriter(fileName,append);
 			out.write(content);
 		} catch (IOException e) {
 			throw e;
@@ -142,15 +150,21 @@ public class FileUtils {
 	public static void write(String content, String fileName) throws IOException {
 		write(content, fileName, false);
 	}
+	
+	public static void delete(String fileName){
+		File file = new File(fileName);
+		if(file.exists())
+			file.delete();
+	}
 
 	public static void main(String[] args) throws IOException {
 		// System.getProperty(Charset.defaultCharset());
-		System.out.println(charsetDetector("E:/test.txt"));
-		 String content = read("E:/test.txt");
-		 System.out.println(content);
+		System.out.println(charsetDetector("E:/dubbo.properties"));
+		String content = read("E:/dubbo.properties");
+		System.out.println(content);
 		// System.out.println(new String(content.getBytes(),
 		// Charset.defaultCharset()));
-//		 write(content, "E:/test.txt");
+		// write(content, "E:/test.txt");
 
 	}
 }
