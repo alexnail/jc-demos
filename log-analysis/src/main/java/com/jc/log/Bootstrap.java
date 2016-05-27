@@ -11,12 +11,14 @@ import com.jc.log.util.XmlUtil;
 
 public class Bootstrap {
 	public static WorkDefinitions workDefinitions = null;
+	public static WorkerAnalysis workerAnalysis  =  null;
 	public static final String DEFAULT_WORK_DEFINITION_FILE_NAME = "work-definition.xml";
 	static{
 		URL resources = WorkDefinitions.class.getClassLoader().getResource("work-definition.xml");
 		try {
 			File workDefinitionFile = new File(resources.toURI());
 			workDefinitions = (WorkDefinitions) XmlUtil.unMarshal(WorkDefinitions.class, workDefinitionFile);
+			workerAnalysis  = new WorkerAnalysis(workDefinitions.getWorkDefinitions());
 		} catch (URISyntaxException | JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

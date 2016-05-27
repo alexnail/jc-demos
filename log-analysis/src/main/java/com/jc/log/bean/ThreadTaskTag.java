@@ -9,6 +9,17 @@ public class ThreadTaskTag {
 	private String closingOrBegin; 
 	private String fileName;
 
+	public ThreadTaskTag(String time, String threadName, String text, String tag, String closingOrBegin,
+			String fileName) {
+		super();
+		this.time = time;
+		this.threadName = threadName;
+		this.text = text;
+		this.tag = tag;
+		this.closingOrBegin = closingOrBegin;
+		this.fileName = fileName;
+	}
+ 
 	public String getTime() {
 		return time;
 	}
