@@ -32,15 +32,34 @@ public class XmlUtilTest {
 
 	public static void main(String[] args) {
 		try {
-			marshalingExample();
-			unMarshalingExample();
-		} catch (JAXBException | URISyntaxException e) {
+//			marshalingExample();
+//			unMarshalingExample();
+			File xmlFile = new File("E:/test.xml");
+			marshal(WorkDefinitions.class, workDefinitions, xmlFile);
+			WorkDefinitions wds = (WorkDefinitions) unMarshal(WorkDefinitions.class, xmlFile);
+			for (WorkDefinition workDefinition : wds.getWorkDefinitions()) {
+				System.out.println(workDefinition);
+			}
+		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
 
+	private static <T> void  marshal(Class clazz,T t,File xmlFile) throws JAXBException {
+		JAXBContext jaxbContext = JAXBContext.newInstance(clazz);
+		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		jaxbMarshaller.marshal(t, xmlFile);
+	}
+
+	private static Object unMarshal(Class clazz,File xmlFile) throws JAXBException  {
+		JAXBContext jaxbContext = JAXBContext.newInstance(clazz);
+		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+		return jaxbUnmarshaller.unmarshal(xmlFile);
+	}
+	
 	private static void marshalingExample() throws JAXBException {
 		JAXBContext jaxbContext = JAXBContext.newInstance(WorkDefinitions.class);
 		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();

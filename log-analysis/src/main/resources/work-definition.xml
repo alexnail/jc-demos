@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workDefinitions>
+    <workDefinition>
+        <name>work1</name>
+        <sloganBegin>work1 begin!!!!</sloganBegin>
+        <sloganClosing>work1 closing!!!</sloganClosing>
+    </workDefinition>
+    <workDefinition>
+        <name>work2</name>
+        <sloganBegin>work2 begin!!!!</sloganBegin>
+        <sloganClosing>work2 closing!!!</sloganClosing>
+    </workDefinition>
+</workDefinitions>
