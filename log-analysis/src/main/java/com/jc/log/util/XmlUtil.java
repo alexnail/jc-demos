@@ -15,7 +15,7 @@ public class XmlUtil {
 	 * @param xmlFile
 	 * @throws JAXBException
 	 */
-	private static <T> void  marshal(Class clazz,T t,File xmlFile) throws JAXBException {
+	public static <T> void  marshal(Class clazz,T t,File xmlFile) throws JAXBException {
 		JAXBContext jaxbContext = JAXBContext.newInstance(clazz);
 		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -28,7 +28,7 @@ public class XmlUtil {
 	 * @return
 	 * @throws JAXBException
 	 */
-	private static Object unMarshal(Class clazz,File xmlFile) throws JAXBException  {
+	public static Object unMarshal(Class clazz,File xmlFile) throws JAXBException  {
 		JAXBContext jaxbContext = JAXBContext.newInstance(clazz);
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		return jaxbUnmarshaller.unmarshal(xmlFile);
