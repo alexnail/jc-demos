@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.jc.log.util.DateUtils;
+import com.jc.commons.DateUtils;
 
 public class ThreadTask implements Comparable<ThreadTask> {
 	private Integer id;

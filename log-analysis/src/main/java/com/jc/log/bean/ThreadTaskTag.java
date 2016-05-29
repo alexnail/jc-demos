@@ -2,24 +2,34 @@ package com.jc.log.bean;
 
 public class ThreadTaskTag {
 
+	private String serverId;
 	private String time; // 记录时间
 	private String threadName; // 线程名
 	private String text; // 日志正文
-	private String tag; //标志开始还是结束，开始BEGIN，结束CLOSING
-	private String closingOrBegin; 
+	private String tag; // 标志开始还是结束，开始BEGIN，结束CLOSING
+	private String correspondingSlogan;
 	private String fileName;
 
-	public ThreadTaskTag(String time, String threadName, String text, String tag, String closingOrBegin,
-			String fileName) {
+	public ThreadTaskTag(String serverId, String time, String threadName, String text, String tag,
+			String correspondingSlogan, String fileName) {
 		super();
+		this.serverId = serverId;
 		this.time = time;
 		this.threadName = threadName;
 		this.text = text;
 		this.tag = tag;
-		this.closingOrBegin = closingOrBegin;
+		this.correspondingSlogan = correspondingSlogan;
 		this.fileName = fileName;
 	}
- 
+
+	public String getServerId() {
+		return serverId;
+	}
+
+	public void setServerId(String serverId) {
+		this.serverId = serverId;
+	}
+
 	public String getTime() {
 		return time;
 	}
@@ -52,13 +62,12 @@ public class ThreadTaskTag {
 		this.tag = tag;
 	}
 
-	
-	public String getClosingOrBegin() {
-		return closingOrBegin;
+	public String getCorrespondingSlogan() {
+		return correspondingSlogan;
 	}
 
-	public void setClosingOrBegin(String closingOrBegin) {
-		this.closingOrBegin = closingOrBegin;
+	public void setCorrespondingSlogan(String correspondingSlogan) {
+		this.correspondingSlogan = correspondingSlogan;
 	}
 
 	public String getFileName() {
