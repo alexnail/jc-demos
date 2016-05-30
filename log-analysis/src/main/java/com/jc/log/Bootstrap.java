@@ -10,6 +10,7 @@ import java.util.Properties;
 
 import javax.xml.bind.JAXBException;
 
+import com.jc.commons.FileUtils;
 import com.jc.commons.XmlUtil;
 import com.jc.log.bean.WorkDefinitions;
 import com.jc.log.io.LogFile;
@@ -35,8 +36,10 @@ public class Bootstrap {
 			e.printStackTrace();
 		}
 	}
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args) throws ParseException, IOException {
 		workerAnalysis.parserLogDir();
 		System.out.println(workerAnalysis.output());
+		FileUtils.write(workerAnalysis.output(), "E:/testlogs.txt");
+		
 	}
 }

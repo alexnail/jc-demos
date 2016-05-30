@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import com.jc.commons.DateUtils;
 import com.jc.commons.FileUtils;
+import com.jc.commons.StringUtis;
 import com.jc.log.bean.ThreadTaskTag;
 import com.jc.log.bean.Work;
 import com.jc.log.bean.WorkDefinition;
@@ -50,7 +51,7 @@ public class WorkerAnalysis {
 			for(File log:logs){
 				try {
 					String fullText = FileUtils.read(log);
-					String fileName =log.getName();
+					String fileName =log.getAbsolutePath();
 					parseFullText(fullText, fileName, serverId);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -73,7 +74,7 @@ public class WorkerAnalysis {
 	
 	public void analysis(String record, String fileName,String serverId) {
 		String[] field = record.split(FIELD_DELIM);
-		String beginTime = field[Integer.valueOf(config.getProperty(TIME_POS))]+field[Integer.valueOf(config.getProperty(TIME_POS))+1];
+		String beginTime = field[Integer.valueOf(config.getProperty(TIME_POS))]+FIELD_DELIM+field[Integer.valueOf(config.getProperty(TIME_POS))+1];
 		String workName = field[Integer.valueOf(config.getProperty(THREAD_POS))];
 		StringBuffer textSB = new StringBuffer();
 		int textPos =  Integer.valueOf(config.getProperty(TEXT_POS));
@@ -172,7 +173,7 @@ public class WorkerAnalysis {
 	private boolean isMatch( ThreadTaskTag preTag,ThreadTaskTag threadTaskTag) {
 		if(preTag .getServerId().equals(threadTaskTag.getServerId())){
 			if(preTag.getThreadName().equals(threadTaskTag.getThreadName())){
-				if(threadTaskTag.getText().equals(preTag.getCorrespondingSlogan())){
+				if(threadTaskTag.getText().contains(preTag.getCorrespondingSlogan())){
 					return true;
 				}
 			}
@@ -192,6 +193,8 @@ public class WorkerAnalysis {
 			}
 			toString.append("\n");
 		}
+		if(StringUtis.isEmpty(toString))
+			toString.append("工人数据为空，请检查work-definition配置是否正确！");
 		return toString.toString();
 	}
 }
