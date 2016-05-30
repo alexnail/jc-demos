@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.Properties;
 
 import javax.xml.bind.JAXBException;
@@ -28,13 +29,14 @@ public class Bootstrap {
 			config.load(configIn);
 			String dir = config.getProperty("dir");
 			LogFile logFile = new LogFile(dir);
-			workerAnalysis  = new WorkerAnalysis(workDefinitions.getWorkDefinitions(),logFile);
+			workerAnalysis  = new WorkerAnalysis(workDefinitions.getWorkDefinitions(),logFile,config);
 		} catch (URISyntaxException | JAXBException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) throws ParseException {
+		workerAnalysis.parserLogDir();
+		System.out.println(workerAnalysis.output());
 	}
 }

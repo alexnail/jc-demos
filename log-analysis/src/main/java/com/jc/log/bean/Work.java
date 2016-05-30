@@ -6,6 +6,16 @@ public class Work {
 	private Long elapseTime; // 工作耗时
 	private String fromFileName; // 从哪个文件开始
 	private String toFileName; // 从哪个文件结束
+	
+	
+	public Work(String name, String beginTime, Long elapseTime, String fromFileName, String toFileName) {
+		super();
+		this.name = name;
+		this.beginTime = beginTime;
+		this.elapseTime = elapseTime;
+		this.fromFileName = fromFileName;
+		this.toFileName = toFileName;
+	}
 	public String getName() {
 		return name;
 	}
@@ -35,6 +45,11 @@ public class Work {
 	}
 	public void setToFileName(String toFileName) {
 		this.toFileName = toFileName;
+	}
+	@Override
+	public String toString() {
+		return "Work [name=" + name + ", beginTime=" + beginTime + ", elapseTime=" + elapseTime + ", fromFileName="
+				+ fromFileName + ", toFileName=" + toFileName + "]";
 	}
 	
 	
