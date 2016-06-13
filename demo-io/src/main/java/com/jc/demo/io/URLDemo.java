@@ -30,7 +30,7 @@ public class URLDemo {
 		// telnet
 		testProtocol("telnet://jevoncode.com");
 		// 本地文件访问
-		testProtocol("file://etc/passwd");
+		testProtocol("file:/etc/passwd");
 		// goher
 		testProtocol("goher://jevoncode.com");
 		// 轻量组目录访问协议
