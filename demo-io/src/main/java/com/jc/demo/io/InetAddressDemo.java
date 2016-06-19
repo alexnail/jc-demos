@@ -5,7 +5,7 @@ import java.net.UnknownHostException;
 
 public class InetAddressDemo {
 	public static void main(String[] args) {
-		String ip = "224.0.1.1";
+		String ip = "0:0:0:0:0:0:0:0";
 		try {
 //			InetAddress local = InetAddress.getLocalHost();
 //			ip =local.getHostAddress(); //获取本地地址 局域网的
