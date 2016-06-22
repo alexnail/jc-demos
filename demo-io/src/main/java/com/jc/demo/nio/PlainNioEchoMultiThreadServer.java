@@ -9,13 +9,12 @@ import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.Charset;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import com.ibm.icu.text.SimpleDateFormat;
 
 public class PlainNioEchoMultiThreadServer {
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:sss");
@@ -96,8 +95,12 @@ public class PlainNioEchoMultiThreadServer {
 	private void send(SelectionKey key) throws IOException {
 		SocketChannel client = (SocketChannel) key.channel();
 		ByteBuffer output = (ByteBuffer) key.attachment();
+		output.flip(); //从写模式改为读模式
 		client.write(output);
-		output.compact();
+//		output.compact();
+		output.clear();//从读模式改为写模式
+		key.attach(output);
+//		output.flip();
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -128,14 +131,14 @@ class Worker implements Runnable {
 		int len = 0;
 		try {
 			while ((len = client.read(buf)) > 0) {// 非阻塞，立刻读取缓冲区可用字节
-				buf.flip();
+				buf.flip();//从写模式改为读模式
 				String message = charset.decode(buf).toString(); // decode方法会情况buf里面的内容
 				System.out.println(logTime + ":[" + threadName + "]receive :" + message);
 				// buf.clear();
 				// key.attach(buf);
-				message = "return to you! messge:" + message;
+				message = "return to you! messge:" + message +"\r\n";
 				System.out.println(logTime + ":[" + threadName + "]send :" + message);
-				buf.clear();
+				buf.clear();//从读模式改为写模式
 				buf.put(message.getBytes());
 				key.attach(buf);
 			}
