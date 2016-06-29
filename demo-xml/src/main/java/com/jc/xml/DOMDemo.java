@@ -54,7 +54,7 @@ public class DOMDemo {
 			Node node = nl.item(i);
 			if (node instanceof Element) {
 				Element ele = (Element) node;
-				System.out.println(ele.getTagName());
+				System.out.println(ele.getTagName()+"的命名空间="+ele.getNamespaceURI());
 			}
 		}
 	}
