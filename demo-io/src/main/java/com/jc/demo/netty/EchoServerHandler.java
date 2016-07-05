@@ -20,6 +20,7 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
 		String logTime = sdf.format(new Date());
 		System.out.println(logTime+":["+threadName+"]Server received:" +msg);
 		System.out.println(logTime+":["+threadName+"] Hex:" +ByteBufUtil.hexDump((ByteBuf) msg));
+		Thread.sleep(6000*1000);
 		ctx.write(msg);
 	}
 

@@ -50,6 +50,7 @@ public class PlainNioEchoServer {
 						output.flip();
 						System.out.println(output.capacity());
 						System.out.println((char)output.get());
+						Thread.sleep(3000*1000);
 					}
 					if(key.isWritable()){
 						SocketChannel client = (SocketChannel) key.channel();
